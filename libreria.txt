@@ -1,0 +1,246 @@
+-------------------- 1 --------------------
+db.librosEspeciales.insertMany ([
+    {
+        "titulo": "El viajero",
+        "genero": "aventura",
+        "autores": ["Juan Pérez", "Lalo Landa"],
+        "numeroPaginas": 320,
+        "nivelLectura": "juvenil",
+        "precios": [
+            {"tipo": "fisico", "precio": 3500},
+            {"tipo": "digital", "precio": 2500}   
+        ],
+        "disponibleStock": true,
+        "editorial": {
+            "nombre": "Aventuras Editoriales",
+            "pais": "España",
+            "anioFundacion": 1995
+        }
+    },
+    {
+        "titulo": "Estrellas perdidas",
+        "genero": "ciencia ficcion",
+        "autores": ["Carlos Gómez"],
+        "numeroPaginas": 480,
+        "nivelLectura": "adulto",
+        "precios": [
+            {"tipo": "fisico", "precio": 4200},
+            {"tipo": "digital", "precio": 3000}   
+        ],
+        "disponibleStock": true,
+        "editorial": {
+            "nombre": "Galaxia Libros",
+            "pais": "Mexico",
+            "anioFundacion": 2005
+        }
+    },
+    {
+        "titulo": "Amor en verano",
+        "genero": "romance",
+        "autores": ["Lucía Herrera"],
+        "numeroPaginas": 280,
+        "nivelLectura": "juvenil",
+        "precios": [
+            {"tipo": "fisico", "precio": 3800},
+            {"tipo": "digital", "precio": 2800}   
+        ],
+        "disponibleStock": false,
+        "editorial": {
+            "nombre": "Romances Editoriales",
+            "pais": "Atgentina",
+            "anioFundacion": 2010
+        }
+    },
+    {
+        "titulo": "La casa del miedo",
+        "genero": "terror",
+        "autores": ["Lucía Herrera"],
+        "numeroPaginas": 310,
+        "nivelLectura": "adulto",
+        "precios": [
+            {"tipo": "fisico", "precio": 4000},
+            {"tipo": "digital", "precio": 2900}   
+        ],
+        "disponibleStock": true,
+        "editorial": {
+            "nombre": "Tinieblas",
+            "pais": "Chile",
+            "anioFundacion": 1985
+        }
+    },
+    {
+        "titulo": "El jardín secreto",
+        "genero": "aventura",
+        "autores": ["Francisco Hernandez"],
+        "numeroPaginas": 220,
+        "nivelLectura": "infantil",
+        "precios": [
+            {"tipo": "fisico", "precio": 3000},
+            {"tipo": "digital", "precio": 2000}   
+        ],
+        "disponibleStock": false,
+        "editorial": {
+            "nombre": "Aventuras Editoriales",
+            "pais": "Argentina",
+            "anioFundacion": 2010
+        }
+    },
+    {
+        "titulo": "Marte 2050",
+        "genero": "ciencia ficcion",
+        "autores": ["Carlos Gómez"],
+        "numeroPaginas": 520,
+        "nivelLectura": "adulto",
+        "precios": [
+            {"tipo": "fisico", "precio": 4500},
+            {"tipo": "digital", "precio": 3200}   
+        ],
+        "disponibleStock": true,
+        "editorial": {
+            "nombre": "Galaxia Libros",
+            "pais": "España",
+            "anioFundacion": 2015
+        }
+    },
+    {
+        "titulo": "Bajo la misma estrella",
+        "genero": "romance",
+        "autores": ["Sofia Castro"],
+        "numeroPaginas": 350,
+        "nivelLectura": "juvenil",
+        "precios": [
+            {"tipo": "fisico", "precio": 3700},
+            {"tipo": "digital", "precio": 2700}   
+        ],
+        "disponibleStock": false,
+        "editorial": {
+            "nombre": "Romances Editoriales",
+            "pais": "Argentina",
+            "anioFundacion": 2008
+        }
+    },
+    {
+        "titulo": "El ritual",
+        "genero": "terror",
+        "autores": ["Alejandro Gómez"],
+        "numeroPaginas": 410,
+        "nivelLectura": "adulto",
+        "precios": [
+            {"tipo": "fisico", "precio": 4300},
+            {"tipo": "digital", "precio": 3100}   
+        ],
+        "disponibleStock": false,
+        "editorial": {
+            "nombre": "La casita del horror",
+            "pais": "Mexico",
+            "anioFundacion": 1999
+        }
+    },
+    {
+        "titulo": "La isla misteriosa",
+        "genero": "aventura",
+        "autores": ["Lalo Landa", "Julio Verne"],
+        "numeroPaginas": 380,
+        "nivelLectura": "juvenil",
+        "precios": [
+            {"tipo": "fisico", "precio": 3900},
+            {"tipo": "digital", "precio": 2800}   
+        ],
+        "disponibleStock": true,
+        "editorial": {
+            "nombre": "Aventuras Editoriales",
+            "pais": "España",
+            "anioFundacion": 1975
+        }
+    },
+    {
+        "titulo": "Androides",
+        "genero": "ciencia ficcion",
+        "autores": ["Carlos Gómez"],
+        "numeroPaginas": 470,
+        "nivelLectura": "adulto",
+        "precios": [
+            {"tipo": "fisico", "precio": 4400},
+            {"tipo": "digital", "precio":3500}   
+        ],
+        "disponibleStock": false,
+        "editorial": {
+            "nombre": "Galaxia Libros",
+            "pais": "España",
+            "anioFundacion": 2012
+        }
+    }    
+])
+
+test> use libreria
+
+libreria> load("librosEspeciales.js")
+true
+
+-------------------- 2 --------------------
+
+libreria> db.librosEspeciales.find({"autores": "Carlos Gómez"}).count()
+3
+
+-------------------- 3 --------------------
+
+libreria> db.librosEspeciales.find({"genero": "romance", "autores": "Lucía Herrera"}).count()
+1
+
+-------------------- 4 --------------------
+
+libreria> db.librosEspeciales.find({"nivelLectura": "juvenil"}, {"titulo": 1, "numeroPaginas": 1})
+[  
+  {
+    _id: ObjectId('68385673e6156efdbfb5f8a3'),
+    titulo: 'El viajero',
+    numeroPaginas: 320
+  },
+  {
+    _id: ObjectId('68385673e6156efdbfb5f8a5'),
+    titulo: 'Amor en verano',
+    numeroPaginas: 280
+  },
+  {
+    _id: ObjectId('68385673e6156efdbfb5f8a9'),
+    titulo: 'Bajo la misma estrella',
+    numeroPaginas: 350
+  },
+  {
+    _id: ObjectId('68385673e6156efdbfb5f8ab'),
+    titulo: 'La isla misteriosa',
+    numeroPaginas: 380
+  }
+]
+
+-------------------- 5 --------------------
+
+libreria> db.librosEspeciales.find({"numeroPaginas": {$gte: 200, $lte: 400}}, {"numeroPaginas": 1, "titulo": 1, "nivelLectura":1, "_id": 0})
+[
+  { titulo: 'El viajero', numeroPaginas: 320, nivelLectura: 'juvenil' },
+  {
+    titulo: 'Amor en verano',
+    numeroPaginas: 280,
+    nivelLectura: 'juvenil'
+  },
+  {
+    titulo: 'La casa del miedo',
+    numeroPaginas: 310,
+    nivelLectura: 'adulto'
+  },
+  {
+    titulo: 'El jardín secreto',
+    numeroPaginas: 220,
+    nivelLectura: 'infantil'
+  },
+  {
+    titulo: 'Bajo la misma estrella',
+    numeroPaginas: 350,
+    nivelLectura: 'juvenil'
+  },
+  {
+    titulo: 'La isla misteriosa',
+    numeroPaginas: 380,
+    nivelLectura: 'juvenil'
+  }
+]
